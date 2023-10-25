@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lisää kysely</title>
+</head>
+<body>
+    <h1>Lisää kysely</h1>
+    <form th:action="@{/lisaaKysymys}" th:object="${kysely}" method="post">
+        <label for="kysely">Kysely:</label>
+        <input type="text" id="kysely" th:field="*{kysely}" required>
+        <button type="submit">Lisää</button>
+    </form>
+</body>
+</html>

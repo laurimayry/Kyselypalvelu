@@ -8,17 +8,17 @@ import jakarta.persistence.Id;
  
 
 @Entity
-public class Kysely {
+public class Kysymys {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String kysely;
+    private String kysymys;
 
-    public Kysely() {}
+    public Kysymys() {}
    
-    public Kysely(Long id, String kysely) {
+    public Kysymys(Long id, String kysymys) {
     	this.id = id;
-    	this.kysely = kysely;
+    	this.kysymys = kysymys;
     }
 
 	public Long getId() {
@@ -30,11 +30,11 @@ public class Kysely {
 	}
 
 	public String getKysely() {
-		return kysely;
+		return kysymys;
 	}
 
-	public void setKysely(String kysely) {
-		this.kysely = kysely;
+	public void setKysely(String kysymys) {
+		this.kysymys = kysymys;
 	}
     
 }
