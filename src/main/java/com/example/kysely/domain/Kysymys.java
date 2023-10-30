@@ -36,5 +36,10 @@ public class Kysymys {
 	public void setKysely(String kysymys) {
 		this.kysymys = kysymys;
 	}
+
+	@Override
+	public String toString() {
+		return "Kysymys [id=" + id + ", kysymys=" + kysymys + "]";
+	}
     
 }

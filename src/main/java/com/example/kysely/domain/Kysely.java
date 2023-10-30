@@ -36,5 +36,10 @@ public class Kysely {
 	public void setKysely(String kysely) {
 		this.kysely = kysely;
 	}
+
+	@Override
+	public String toString() {
+		return "Kysely [id=" + id + ", kysely=" + kysely + "]";
+	}
     
 }
