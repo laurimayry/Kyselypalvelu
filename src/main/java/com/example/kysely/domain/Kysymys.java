@@ -29,7 +29,7 @@ public class Kysymys {
 		this.id = id;
 	}
 
-	public String getKysely() {
+	public String getKysymys() {
 		return kysymys;
 	}
 
