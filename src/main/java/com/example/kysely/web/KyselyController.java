@@ -49,4 +49,3 @@ public String saveKysely(@ModelAttribute Kysely kysely) {
 		
 	    }
 	
-
