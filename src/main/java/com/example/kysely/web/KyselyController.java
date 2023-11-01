@@ -8,17 +8,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.kysely.domain.Kysely;
 import com.example.kysely.domain.KyselyRepository;
-import com.example.kysely.domain.Kysymys;
-import com.example.kysely.domain.KysymysRepository;
 
 @Controller
 public class KyselyController {
-
-	@Autowired
-	private KyselyRepository kyselyRepository;
 	
 	@Autowired
-	private KysymysRepository kysymysRepository;
+	private KyselyRepository kyselyRepository;
 	
 	 @RequestMapping(value = "/lisaaKysely", method = RequestMethod.GET)
 	    public String lisaaKysely(Model model) {
@@ -26,13 +21,11 @@ public class KyselyController {
 	        return "lisaaKysely";
 	    }
 
-	 
-
-	    @RequestMapping(value = "/lisaaKysely", method = RequestMethod.POST)
-	    public String lisaaKysymys(Kysely kysely) {
-	        kyselyRepository.save(kysely);
-	        return "redirect:/lisaaKysymys";
-    }
+	 @RequestMapping(value = "/lisaaKysely", method = RequestMethod.POST)
+	 public String lisaaKysely(Kysely kysely) {
+	     kyselyRepository.save(kysely);
+	     return "redirect:/lisaaKysely";  
+	 }
 		 @RequestMapping(value = "/lisaaKysymys", method = RequestMethod.GET)
 		    public String naytaLisayslomake(Model model) {
 		        model.addAttribute("kysymys", new Kysymys());
@@ -43,8 +36,13 @@ public class KyselyController {
 
 		    @RequestMapping(value = "/lisaaKysymys", method = RequestMethod.POST)
 		    public String lisaaKysymys(Kysymys kysymys) {
-		        kysymysRepository.save(kysymys);
+		        kyselyRepository.save(kysymys);
 		        return "redirect:/lisaaKysymys";
 	    }
+		    @RequestMapping(value = "/save", method = RequestMethod.POST)
+			public String save(Kysymys kysymys) {
+				kyselyRepository.save(kysymys);
+				return "redirect:lisaaKysymys";
+			}
 	}
 
