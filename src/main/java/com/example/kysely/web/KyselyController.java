@@ -40,7 +40,7 @@ public class KyselyController {
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 public String saveKysely(@ModelAttribute Kysely kysely) {
-    // kysely.getKysymykset() will now contain a list of questions
+   
     kyselyRepository.save(kysely);
     return "redirect:/kyselyLista";
 }
