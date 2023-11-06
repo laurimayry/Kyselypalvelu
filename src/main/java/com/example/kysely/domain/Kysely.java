@@ -1,6 +1,5 @@
 package com.example.kysely.domain;
 
-import org.hibernate.mapping.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,15 +14,13 @@ public class Kysely {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String kyselynNimi;
-	private java.util.List<String> kysymykset;
 
     public Kysely() {}
 
 	
 
-	public Kysely( String kyselynNimi, java.util.List<String> kysymykset) {
+	public Kysely( String kyselynNimi) {
 		this.kyselynNimi = kyselynNimi;
-		this.kysymykset = kysymykset;
 	}
 
 
@@ -44,13 +41,13 @@ public class Kysely {
 		this.kyselynNimi = kyselynNimi;
 	}
 
-	public java.util.List<String> getKysymykset() {
-		return kysymykset;
-	}
 
-	public void setKysymykset(java.util.List<String> kysymykset) {
-		this.kysymykset = kysymykset;
+
+	@Override
+	public String toString() {
+		return "Kysely [id=" + id + ", kyselynNimi=" + kyselynNimi + "]";
 	}
    
+	
     
 }

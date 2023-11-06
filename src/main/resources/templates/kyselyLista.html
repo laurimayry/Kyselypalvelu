@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Lista kyselyistä</title>
-  </head>
-  <body>
-    <a href="/lisaaKysely"> Lisää kysely</a>
-    <table>
-      <tr>
-        <th>Kyselyn nimi</th>
-        <th>Kysymykset</th>
-      </tr>
-      <tr th:each="kysely : ${kyselyt}">
-        <td th:text="${kysely.kyselynNimi}"></td>
-        <td th:text="${kysely.kysymykset}"></td>
-      </tr>
-    </table>
-  </body>
+<head>
+<meta charset="UTF-8" />
+<title>Lista kyselyistä</title>
+</head>
+<body>
+	<a href="/lisaaKysely"> Lisää kysely</a>
+	<table>
+		<tr>
+			<th>Kyselyn nimi</th>
+		</tr>
+		<tr th:each="kysely : ${kyselyt}">
+			<td>
+				<a th:href="@{/kysymykset}" th:text="${kysely.kyselynNimi}"></a>
+			</td>
+
+		</tr>
+	</table>
+</body>
 </html>

@@ -38,12 +38,12 @@ public class KyselyController {
 
 	 
 
-	@RequestMapping(value = "/save", method = RequestMethod.POST)
-public String saveKysely(@ModelAttribute Kysely kysely) {
-   
-    kyselyRepository.save(kysely);
-    return "redirect:/kyselyLista";
-}
+		@RequestMapping(value = "/save", method = RequestMethod.POST)
+		public String saveKysely(@ModelAttribute Kysely kysely) {
+
+			kyselyRepository.save(kysely);
+			return "redirect:/kyselyLista";
+		}
 		
 
 		
