@@ -6,33 +6,27 @@
   </head>
   <body>
     <a href="/lisaaKysely"> Lisää kysely</a>
-    <table>
-      <tr>
-        <th>Kyselyn nimi</th>
-      </tr>
-      <tr th:each="kysymys : ${kysymykset}">
-        <td>
-          <a
-            th:href="@{/kysymykset}"
-            th:text="${kysymys.kysely.name}"
-            data-name="${kysymys.kysely.name}"
-          ></a>
-        </td>
-      </tr>
-    </table>
-    <div id="kyselyjenNimet"></div>
+    <div id="uniqueNamesList">
+      <a
+        th:each="kysymys : ${kysymykset}"
+        th:href="@{/kysymykset}"
+        th:text="${kysymys.kysely.name}"
+      ></a>
+    </div>
     <script>
-      // JavaScript code to access kysely.name
-      var links = document.querySelectorAll("a[data-name]");
-      var uniqueNames = [];
-      var uniqueNamesList = document.getElementById("kyselynNimet");
+      // JavaScript code to make names unique (if not already done in the Java backend)
+      var uniqueNames = new Set();
+      var uniqueNamesList = document.getElementById("uniqueNamesList");
 
+      var links = uniqueNamesList.querySelectorAll("a");
       links.forEach(function (link) {
-        var kyselyName = link.getAttribute("data-name");
+        var kyselyName = link.textContent;
 
-        if (!uniqueNames.includes(kyselyName)) {
-          console.log(kyselyName); // You can now access kyselyName in JavaScript
-          uniqueNames.push(kyselyName);
+        if (!uniqueNames.has(kyselyName)) {
+          uniqueNames.add(kyselyName);
+        } else {
+          // If the name is not unique, remove the duplicate link
+          uniqueNamesList.removeChild(link);
         }
       });
     </script>
