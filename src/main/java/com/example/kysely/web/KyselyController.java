@@ -20,30 +20,31 @@ public class KyselyController {
 
 	@Autowired
 	private KyselyRepository kyselyRepository;
+	@Autowired
+	private KysymysRepository kysymysRepository;
 
 	@RequestMapping(value = "/kyselyLista", method = RequestMethod.GET)
-    public String listBooks(Model model) {
-        model.addAttribute("kyselyt", kyselyRepository.findAll());
+    public String listKyselyt(Model model) {
+        model.addAttribute("kysymykset", kysymysRepository.findAll());
         return "kyselyLista";
     }
 	
 	
 	 @RequestMapping(value = "/lisaaKysely", method = RequestMethod.GET)
 	    public String lisaaKysely(Model model) {
-			model.addAttribute("kysely", new Kysely());
-
+			model.addAttribute("kysymys", new Kysymys());
 			
 	        return "lisaaKysely";
 	    }
 
 	 
 
-		@RequestMapping(value = "/save", method = RequestMethod.POST)
-		public String saveKysely(@ModelAttribute Kysely kysely) {
-
-			kyselyRepository.save(kysely);
-			return "redirect:/kyselyLista";
-		}
+	@RequestMapping(value = "/save", method = RequestMethod.POST)
+public String saveKysely(@ModelAttribute Kysymys kysymys) {
+   
+    kysymysRepository.save(kysymys);
+    return "redirect:/kyselyLista";
+}
 		
 
 		

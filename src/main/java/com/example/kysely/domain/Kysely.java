@@ -1,10 +1,13 @@
 package com.example.kysely.domain;
 
-
+import java.util.List;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.CascadeType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
  
 
@@ -12,42 +15,41 @@ import jakarta.persistence.Id;
 public class Kysely {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String kyselynNimi;
+    private Long kyselyId;
+    private String name;
+	
 
-    public Kysely() {}
+    protected Kysely() {}
+	@JsonIgnore
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "kysely")
+	private List<Kysymys> kysymykset;
 
 	
 
-	public Kysely( String kyselynNimi) {
-		this.kyselynNimi = kyselynNimi;
+	public Kysely( String name) {
+		super();
+		this.name = name;
+		
 	}
 
 
 
-	public Long getId() {
-		return id;
+	public Long getKyselyId() {
+		return kyselyId;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setKyselyId(Long id) {
+		this.kyselyId = kyselyId;
 	}
 
-	public String getKyselynNimi() {
-		return kyselynNimi;
+	public String getName() {
+		return name;
 	}
 
-	public void setKyselynNimi(String kyselynNimi) {
-		this.kyselynNimi = kyselynNimi;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-
-
-	@Override
-	public String toString() {
-		return "Kysely [id=" + id + ", kyselynNimi=" + kyselynNimi + "]";
-	}
    
-	
     
 }
