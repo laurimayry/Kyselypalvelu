@@ -12,10 +12,29 @@
       </tr>
       <tr th:each="kysymys : ${kysymykset}">
         <td>
-          <a th:href="@{/kysymykset}" th:text="${kysymys.kysely.name}"></a>
+          <a
+            th:href="@{/kysymykset}"
+            th:text="${kysymys.kysely.name}"
+            data-name="${kysymys.kysely.name}"
+          ></a>
         </td>
       </tr>
     </table>
-    <script></script>
+    <div id="kyselyjenNimet"></div>
+    <script>
+      // JavaScript code to access kysely.name
+      var links = document.querySelectorAll("a[data-name]");
+      var uniqueNames = [];
+      var uniqueNamesList = document.getElementById("kyselynNimet");
+
+      links.forEach(function (link) {
+        var kyselyName = link.getAttribute("data-name");
+
+        if (!uniqueNames.includes(kyselyName)) {
+          console.log(kyselyName); // You can now access kyselyName in JavaScript
+          uniqueNames.push(kyselyName);
+        }
+      });
+    </script>
   </body>
 </html>
