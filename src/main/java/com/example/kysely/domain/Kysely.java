@@ -38,9 +38,7 @@ public class Kysely {
 		return kyselyId;
 	}
 
-	public void setKyselyId(Long id) {
-		this.kyselyId = kyselyId;
-	}
+	
 
 	public String getName() {
 		return name;

@@ -28,6 +28,12 @@ public class KyselyController {
         model.addAttribute("kysymykset", kysymysRepository.findAll());
         return "kyselyLista";
     }
+
+	@RequestMapping(value = "/kysymykset", method = RequestMethod.GET)
+    public String listKysymykset(Model model) {
+        model.addAttribute("kysymykset", kysymysRepository.findAll());
+        return "kysymykset";
+    }
 	
 	
 	 @RequestMapping(value = "/lisaaKysely", method = RequestMethod.GET)
