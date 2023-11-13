@@ -9,7 +9,7 @@
     <div id="uniqueNamesList">
       <a
         th:each="kysymys : ${kysymykset}"
-        th:href="@{/kysymykset}"
+        th:href="@{/kysymykset/{id}(id=${kysymys.kysely.kyselyId})}"
         th:text="${kysymys.kysely.name}"
       ></a>
     </div>

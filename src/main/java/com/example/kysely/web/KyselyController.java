@@ -5,7 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,13 +28,19 @@ public class KyselyController {
 
 	@RequestMapping(value = "/kyselyLista", method = RequestMethod.GET)
     public String listKyselyt(Model model) {
+	
         model.addAttribute("kysymykset", kysymysRepository.findAll());
         return "kyselyLista";
     }
-
-	@RequestMapping(value = "/kysymykset", method = RequestMethod.GET)
-    public String listKysymykset(Model model) {
-        model.addAttribute("kysymykset", kysymysRepository.findAll());
+	// pitäs jotenki kattoo miten saa näytettyä vaan linkin kyselyn nimeen linkitety kysymykset
+	@GetMapping(value = "/kysymykset/{kyselyId}")
+    public String listKysymykset(@PathVariable Long kyselyId ,Model model) {
+		Kysely kysely = new Kysely();
+		kysely.setKyselyId(kyselyId);
+		List <Kysymys> kysymysLista = kysymysRepository.findByKysely(kysely);
+		//var lista = kysymysRepository.findAll();
+		System.out.print(kysymysLista);
+        model.addAttribute("kysymykset", kysymysLista);
         return "kysymykset";
     }
 	

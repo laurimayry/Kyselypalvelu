@@ -32,11 +32,17 @@ public class KyselyApplication {
         return(args) -> {
 			log.info("save a couple of kyselys");
 			kyselyRepository.save(new Kysely("Kulttuuri kysely"));
+			kyselyRepository.save(new Kysely("Urheilu kysely"));
 			
 
 			
             kysymysRepository.save(new Kysymys("Mitä elokuvia suosittelet?", kyselyRepository.findByName("Kulttuuri kysely").get(0)));
            kysymysRepository.save(new Kysymys("Mikä on paras elokuva? ", kyselyRepository.findByName("Kulttuuri kysely").get(0)));
+		   
+
+		   kysymysRepository.save(new Kysymys("Kuka on lempi urheilijasi?", kyselyRepository.findByName("Urheilu kysely").get(0)));
+		   
+           kysymysRepository.save(new Kysymys("Kuka voitti jääkiekon mm kisat vuonna 2012?", kyselyRepository.findByName("Urheilu kysely").get(0)));
         };
     }
 

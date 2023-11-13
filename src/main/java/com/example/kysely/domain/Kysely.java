@@ -19,7 +19,7 @@ public class Kysely {
     private String name;
 	
 
-    protected Kysely() {}
+    public Kysely() {}
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "kysely")
 	private List<Kysymys> kysymykset;
@@ -32,7 +32,9 @@ public class Kysely {
 		
 	}
 
-
+	public void setKyselyId(Long kyselyId) {
+		this.kyselyId = kyselyId;
+	}
 
 	public Long getKyselyId() {
 		return kyselyId;
@@ -46,6 +48,13 @@ public class Kysely {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return  name ;
 	}
 
    
