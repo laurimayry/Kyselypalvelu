@@ -67,6 +67,24 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			
+			 <plugin>
+            	<groupId>org.apache.maven.plugins</groupId>
+            	<artifactId>maven-compiler-plugin</artifactId>
+            	<version>3.8.1</version> <!-- Use the latest version -->
+            	<configuration>
+                <source>1.8</source> <!-- Set the appropriate source version -->
+                <target>1.8</target> <!-- Set the appropriate target version -->
+                <compilerArgs>
+                    <arg>-release</arg>
+                    <arg>8</arg> <!-- Set the appropriate release version -->
+                </compilerArgs>
+            </configuration>
+
+
+            </plugin>
+
+			
 		</plugins>
 	</build>
 
