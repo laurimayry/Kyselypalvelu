@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.example.kysely.domain.Kysely;
 import com.example.kysely.domain.KyselyRepository;
@@ -49,9 +50,7 @@ public class KyselyController {
 			
 	        return "lisaaKysely";
 	    }
-
-	 
-		//ei näytä uutta kyselyä kyselyListassa, koska kyselyt haetaan kysymysReposta. 
+ 
 	@RequestMapping(value = "/saveKysely", method = RequestMethod.POST)
 public String saveKysely(@ModelAttribute Kysely kysely, Model model) {
 	
@@ -60,7 +59,18 @@ public String saveKysely(@ModelAttribute Kysely kysely, Model model) {
     return "redirect:/kyselyLista";
 }
 		
+ //shows as JSON using RESTful service
+    @RequestMapping(value="/kysymykset", method = RequestMethod.GET)
+    public @ResponseBody List <Kysymys> kysymysListaRest(){
+        return(List<Kysymys>) kysymysRepository.findAll();
+    }
 
+
+	@RequestMapping(value="/kyselyt", method = RequestMethod.GET)
+    public @ResponseBody List <Kysely> kyselyListaRest(){
+        return(List<Kysely>) kyselyRepository.findAll();
+    }
+	
 		
 	    }
 	
