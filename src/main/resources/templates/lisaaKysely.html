@@ -6,46 +6,17 @@
   </head>
   <body>
     <h1>Lisää kysely</h1>
-    <form th:action="@{save}" th:object="${kysely}" action="#" method="post">
+    <form
+      th:action="@{saveKysely}"
+      th:object="${kysely}"
+      action="#"
+      method="post"
+    >
       <!--Tässä otetaan kyselyn nimi-->
-      <label for="kyselynNimi">Kyselyn nimi:</label>
-      <input type="text" id="kyselynNimi" th:field="*{kyselynNimi}" required />
-      <br />
-      <br />
-      <!--Tässä otetaan ensimmäinen kysymys-->
-      <label for="kysymykset">Kysymykset:</label>
-      <br />
-      <input
-        type="text"
-        id="kysymykset"
-        th:field="*{kysymykset[0]}"
-        required
-        placeholder="Kirjoita kysymys"
-      />
-      <button type="button" onclick="lisaaKysymys()">Lisää uusi kysymys</button>
-      <div id="kysymys-container">
-        <!-- lisaaKysymys() lisää tähän uudet input kentät -->
-      </div>
+      <label for="name">Kyselyn nimi:</label>
+      <input type="text" id="name" th:field="*{name}" required />
 
       <button type="submit">Lisää kysely</button>
     </form>
-
-    <script>
-      let kysymyksetInput = document.getElementById("kysymykset");
-      let kysymysContainer = document.getElementById("kysymys-container");
-      let kysymysCount = 1;
-      // funktio joka luo uuden input kentän
-      function lisaaKysymys() {
-        const uusiKysymysInput = document.createElement("input");
-        uusiKysymysInput.type = "text";
-        uusiKysymysInput.id = "kysymykset" + kysymysCount;
-        uusiKysymysInput.name = "kysymykset[" + kysymysCount + "]";
-        uusiKysymysInput.required = true;
-        uusiKysymysInput.placeholder = "Kirjoita kysymys";
-
-        kysymysContainer.appendChild(uusiKysymysInput);
-        kysymysCount++;
-      }
-    </script>
   </body>
 </html>

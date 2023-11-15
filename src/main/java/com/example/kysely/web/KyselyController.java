@@ -28,18 +28,16 @@ public class KyselyController {
 
 	@RequestMapping(value = "/kyselyLista", method = RequestMethod.GET)
     public String listKyselyt(Model model) {
-	
-        model.addAttribute("kysymykset", kysymysRepository.findAll());
+		
+        model.addAttribute("kyselyt", kyselyRepository.findAll());
         return "kyselyLista";
     }
-	// pitäs jotenki kattoo miten saa näytettyä vaan linkin kyselyn nimeen linkitety kysymykset
+	
 	@GetMapping(value = "/kysymykset/{kyselyId}")
     public String listKysymykset(@PathVariable Long kyselyId ,Model model) {
 		Kysely kysely = new Kysely();
 		kysely.setKyselyId(kyselyId);
 		List <Kysymys> kysymysLista = kysymysRepository.findByKysely(kysely);
-		//var lista = kysymysRepository.findAll();
-		System.out.print(kysymysLista);
         model.addAttribute("kysymykset", kysymysLista);
         return "kysymykset";
     }
@@ -47,17 +45,18 @@ public class KyselyController {
 	
 	 @RequestMapping(value = "/lisaaKysely", method = RequestMethod.GET)
 	    public String lisaaKysely(Model model) {
-			model.addAttribute("kysymys", new Kysymys());
+			model.addAttribute("kysely", new Kysely());
 			
 	        return "lisaaKysely";
 	    }
 
 	 
+		//ei näytä uutta kyselyä kyselyListassa, koska kyselyt haetaan kysymysReposta. 
+	@RequestMapping(value = "/saveKysely", method = RequestMethod.POST)
+public String saveKysely(@ModelAttribute Kysely kysely, Model model) {
+	
 
-	@RequestMapping(value = "/save", method = RequestMethod.POST)
-public String saveKysely(@ModelAttribute Kysymys kysymys) {
-   
-    kysymysRepository.save(kysymys);
+    kyselyRepository.save(kysely);
     return "redirect:/kyselyLista";
 }
 		
