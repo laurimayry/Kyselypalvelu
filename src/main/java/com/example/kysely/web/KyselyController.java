@@ -1,6 +1,7 @@
 package com.example.kysely.web;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -60,17 +61,26 @@ public String saveKysely(@ModelAttribute Kysely kysely, Model model) {
 }
 		
  //shows as JSON using RESTful service
-    @RequestMapping(value="/kysymykset", method = RequestMethod.GET)
+    @RequestMapping(value="/kysymyksetREST", method = RequestMethod.GET)
     public @ResponseBody List <Kysymys> kysymysListaRest(){
         return(List<Kysymys>) kysymysRepository.findAll();
     }
 
 
-	@RequestMapping(value="/kyselyt", method = RequestMethod.GET)
+	@RequestMapping(value="/kyselytREST", method = RequestMethod.GET)
     public @ResponseBody List <Kysely> kyselyListaRest(){
         return(List<Kysely>) kyselyRepository.findAll();
     }
 	
+	 @RequestMapping(value="/kysymyksetREST/{id}", method = RequestMethod.GET)
+    public @ResponseBody Optional <Kysymys> kysymysByIdRest(@PathVariable Long id){
+        return(Optional <Kysymys>)  kysymysRepository.findById(id);
+    }
+
+     @RequestMapping(value="/kyselytREST/{id}", method = RequestMethod.GET)
+    public @ResponseBody Optional <Kysely> kyselyByIdRest(@PathVariable Long id){
+        return(Optional <Kysely>)  kyselyRepository.findById(id);
+    }
 		
-	    }
+}
 	
