@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -82,22 +83,25 @@ public class KyselyController {
 
 		
  //shows as JSON using RESTful service
+	@CrossOrigin
     @RequestMapping(value="/kysymyksetREST", method = RequestMethod.GET)
     public @ResponseBody List <Kysymys> kysymysListaRest(){
         return(List<Kysymys>) kysymysRepository.findAll();
     }
 
-
+	@CrossOrigin
 	@RequestMapping(value="/kyselytREST", method = RequestMethod.GET)
     public @ResponseBody List <Kysely> kyselyListaRest(){
         return(List<Kysely>) kyselyRepository.findAll();
     }
 	
+	@CrossOrigin
 	 @RequestMapping(value="/kysymyksetREST/{id}", method = RequestMethod.GET)
     public @ResponseBody Optional <Kysymys> kysymysByIdRest(@PathVariable Long id){
         return(Optional <Kysymys>)  kysymysRepository.findById(id);
     }
 
+	@CrossOrigin
      @RequestMapping(value="/kyselytREST/{id}", method = RequestMethod.GET)
     public @ResponseBody Optional <Kysely> kyselyByIdRest(@PathVariable Long id){
         return(Optional <Kysely>)  kyselyRepository.findById(id);
