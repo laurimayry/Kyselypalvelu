@@ -3,14 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Lisää kysymys</title>
+     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 <body>
     <h1>Lisää kysymys</h1>
-    <form th:action="@{save}" th:object="${kysymys}" method="post">
+     <form th:action="@{'/saveKysymys/' + ${kysely.kyselyId}}" th:object="${kysymys}" method="post">
         <label for="kysymys">Kysymys:</label>
-        <input type="text" id="kysymys" th:field="*{kysymys}" required>
+        <input type="text" id="kysymys" th:field="${kysymys.kysymysteksti}" required>
         <button type="submit">Lisää</button>
-        
     </form>
+    
+    
+    
+  
+    <script>
+    var kysymykset = [];
+    
+    function submitForm() {
+    	var kysymys = document.getElementById("kysymys").value;
+    	kysymykset.push(kysymys);
+    	document.getElementById("kysymys").value = "";
+    	console.log(kysymys);
+    	return false;
+    }
+    
+    </script>
+    
 </body>
 </html>

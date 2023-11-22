@@ -20,7 +20,7 @@ public class Kysely {
 	
 
     public Kysely() {}
-	@JsonIgnore
+	//@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "kysely")
 	private List<Kysymys> kysymykset;
 	@JsonIgnore

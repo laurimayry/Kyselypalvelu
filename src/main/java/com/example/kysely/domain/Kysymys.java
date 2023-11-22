@@ -13,16 +13,12 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 
-
-
- 
-
 @Entity
 public class Kysymys {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String kysymys;
+    private String kysymysteksti;
 
 
 	public Kysymys() {}
@@ -37,9 +33,9 @@ public class Kysymys {
 
     
    
-    public Kysymys( String kysymys, Kysely kysely) {
+    public Kysymys( String kysymysteksti, Kysely kysely) {
 		super();
-    	this.kysymys = kysymys;
+    	this.kysymysteksti = kysymysteksti;
 		this.kysely = kysely;
     }
 
@@ -51,12 +47,12 @@ public class Kysymys {
 		this.id = id;
 	}
 
-	public String getKysymys() {
-		return kysymys;
+	public String getKysymysteksti() {
+		return kysymysteksti;
 	}
 
-	public void setKysymys(String kysymys) {
-		this.kysymys = kysymys;
+	public void setKysymysteksti(String kysymysteksti) {
+		this.kysymysteksti = kysymysteksti;
 	}
 
 	public Kysely getKysely() {
@@ -70,10 +66,10 @@ public class Kysymys {
 	@Override
 	public String toString() {
 		if(this.kysely!=null) {
-		return "Kysymys [id=" + id + ", kysymys=" + kysymys + ", kysely=" + this.getKysely() + "]";
+		return "Kysymys [id=" + id + ", kysymys=" + kysymysteksti + ", kysely=" + this.getKysely() + "]";
 		}
 		else {
-		return "Kysymys [id=" + id + ", kysymys=" + kysymys + ", kysely="+kysely+",]";
+		return "Kysymys [id=" + id + ", kysymys=" + kysymysteksti + ", kysely="+kysely+",]";
 		}
 	}
 

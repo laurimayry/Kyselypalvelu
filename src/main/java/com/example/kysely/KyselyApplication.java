@@ -1,19 +1,18 @@
 package com.example.kysely;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
+import com.example.kysely.domain.Kysely;
 import com.example.kysely.domain.KyselyRepository;
+import com.example.kysely.domain.Kysymys;
 import com.example.kysely.domain.KysymysRepository;
 import com.example.kysely.domain.Vastaus;
 import com.example.kysely.domain.VastausRepository;
-import com.example.kysely.domain.Kysely;
-import com.example.kysely.domain.Kysymys;
 
 @SpringBootApplication
 public class KyselyApplication {
@@ -31,8 +30,12 @@ public class KyselyApplication {
 			log.info("save a couple of kyselys");
 			kyselyRepository.save(new Kysely("Kulttuuri kysely"));
 			kyselyRepository.save(new Kysely("Urheilu kysely"));
+
 			
 			log.info("save a couple of vastaus");
+
+			kyselyRepository.save(new Kysely("Haaga-Helian kahvila kysely"));
+
 			
 		   vastausRepository.save(new Vastaus("Batman", kysymysRepository.findByKysymys("Mitä elokuvia suosittelet?"), kyselyRepository.findByName("Kulttuuri kysely").get(0)));
 		   
@@ -40,10 +43,20 @@ public class KyselyApplication {
             kysymysRepository.save(new Kysymys("Mitä elokuvia suosittelet?", kyselyRepository.findByName("Kulttuuri kysely").get(0)));
            kysymysRepository.save(new Kysymys("Mikä on paras elokuva? ", kyselyRepository.findByName("Kulttuuri kysely").get(0)));
 
-
 		   kysymysRepository.save(new Kysymys("Kuka on lempi urheilijasi?", kyselyRepository.findByName("Urheilu kysely").get(0)));
-		   
            kysymysRepository.save(new Kysymys("Kuka voitti jääkiekon mm kisat vuonna 2012?", kyselyRepository.findByName("Urheilu kysely").get(0)));
+       
+           kysymysRepository.save(new Kysymys("1.	Oletko koskaan asioinut Haaga-Helian kahvilassa?", kyselyRepository.findByName("Haaga-Helian kahvila kysely").get(0)));
+           kysymysRepository.save(new Kysymys("2.	Oletko ollut yleisesti tyytyväinen kahvilaan?", kyselyRepository.findByName("Haaga-Helian kahvila kysely").get(0)));
+           kysymysRepository.save(new Kysymys("3.	Jos et, niin miksi?", kyselyRepository.findByName("Haaga-Helian kahvila kysely").get(0)));
+           kysymysRepository.save(new Kysymys("4.	Onko kahvilan hinnoittelu mielestäsi kohtuullinen?", kyselyRepository.findByName("Haaga-Helian kahvila kysely").get(0)));
+           kysymysRepository.save(new Kysymys("5.	Onko kahvilan valikoima mielestäsi hyvä ja kattava?", kyselyRepository.findByName("Haaga-Helian kahvila kysely").get(0)));
+           kysymysRepository.save(new Kysymys("6.	Jos ei, niin mitä haluaisit muuttaa kahvilan valikoimassa?", kyselyRepository.findByName("Haaga-Helian kahvila kysely").get(0)));
+           kysymysRepository.save(new Kysymys("7.	Onko kahvilan tilat mielestäsi viihtyisät?", kyselyRepository.findByName("Haaga-Helian kahvila kysely").get(0)));
+           kysymysRepository.save(new Kysymys("8.	Jos ei, niin miten muuttaisit niitä?", kyselyRepository.findByName("Haaga-Helian kahvila kysely").get(0)));
+           kysymysRepository.save(new Kysymys("9.	Oletko ollut tyytyväinen saamaasi asiakaspalveluun kahvilassa?", kyselyRepository.findByName("Haaga-Helian kahvila kysely").get(0)));
+           kysymysRepository.save(new Kysymys("10.	Monennen vuoden opiskelija olet?", kyselyRepository.findByName("Haaga-Helian kahvila kysely").get(0)));
+           
         };
     }
 
