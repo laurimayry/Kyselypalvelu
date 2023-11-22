@@ -23,6 +23,9 @@ public class Kysely {
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "kysely")
 	private List<Kysymys> kysymykset;
+	@JsonIgnore
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "kysely")
+	private List<Vastaus> vastaukset;
 
 	
 
