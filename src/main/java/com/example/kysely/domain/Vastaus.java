@@ -13,10 +13,11 @@ public class Vastaus {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long vastausId;
     private String vastaus;
+    
 
     @ManyToOne
-	@JoinColumn(name = "id")
-	private Kysymys kysymys;
+	@JoinColumn(name = "kysymysteksti")
+	private Kysymys kysymysteksti;
 
     @ManyToOne
 	@JoinColumn(name = "kyselyId")
@@ -26,10 +27,10 @@ public class Vastaus {
 
     
 
-    public Vastaus(String vastaus, Kysymys kysymys, Kysely kysely) {
+    public Vastaus(String vastaus, Kysymys kysymysteksti, Kysely kysely) {
         super();
         this.vastaus = vastaus;
-        this.kysymys = kysymys;
+        this.kysymysteksti = kysymysteksti;
         this.kysely = kysely;
     }
 
@@ -51,12 +52,12 @@ public class Vastaus {
         this.vastaus = vastaus;
     }
 
-    public Kysymys getKysymys() {
-        return kysymys;
+    public Kysymys getKysymysteksti() {
+        return kysymysteksti;
     }
 
-    public void setKysymys(Kysymys kysymys) {
-        this.kysymys = kysymys;
+    public void setKysymysteksti(Kysymys kysymysteksti) {
+        this.kysymysteksti = kysymysteksti;
     }
 
     public Kysely getKysely() {
@@ -69,7 +70,7 @@ public class Vastaus {
 
     @Override
     public String toString() {
-        return "Vastaus [vastausId=" + vastausId + ", vastaus=" + vastaus + ", kysymys=" + kysymys + ", kysely=" + kysely + "]";
+        return "Vastaus [vastausId=" + vastausId + ", vastaus=" + vastaus + ", kysymys=" + kysymysteksti + ", kysely=" + kysely + "]";
     }
 
     

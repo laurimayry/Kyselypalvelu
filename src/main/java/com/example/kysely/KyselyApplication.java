@@ -37,7 +37,7 @@ public class KyselyApplication {
 			kyselyRepository.save(new Kysely("Haaga-Helian kahvila kysely"));
 
 			
-		   vastausRepository.save(new Vastaus("Batman", kysymysRepository.findByKysymys("Mitä elokuvia suosittelet?"), kyselyRepository.findByName("Kulttuuri kysely").get(0)));
+		   vastausRepository.save(new Vastaus("Batman", kysymysRepository.findByKysymysteksti("Mitä elokuvia suosittelet?"), kyselyRepository.findByName("Kulttuuri kysely").get(0)));
 		   
 			log.info("save a couple of kysymys");
             kysymysRepository.save(new Kysymys("Mitä elokuvia suosittelet?", kyselyRepository.findByName("Kulttuuri kysely").get(0)));
