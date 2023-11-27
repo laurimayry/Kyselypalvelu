@@ -16,10 +16,7 @@
       <label for="name">Kyselyn nimi:</label>
       <input type="text" id="name" th:field="*{name}" required />
 
-       <form th:action="@{'/lisaaKysymys/' + ${kyselyId}}" method="get">
-    <button type="submit">Lisää kysely</button>
-      </form>
-
+      <button type="submit">Lisää kysely</button>
     </form>
   </body>
 </html>

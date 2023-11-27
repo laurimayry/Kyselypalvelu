@@ -56,7 +56,8 @@ public class KyselyController {
 	public String saveKysely(@ModelAttribute Kysely kysely, Model model) {
 
 		kyselyRepository.save(kysely);
-		return "redirect:/lisaaKysymys";
+		Long kyselyId = kysely.getKyselyId();
+		return "redirect:/lisaaKysymys/"+kyselyId;
 	}
 
 	// PALAUTTAA SELAIMEEN UUDEN KYSYMYKSEN LISÄYSLOMAKKEEN
