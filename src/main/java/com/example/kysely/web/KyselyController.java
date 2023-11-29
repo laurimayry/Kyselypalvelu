@@ -82,7 +82,7 @@ public class KyselyController {
 		kysely.setKyselyId(kyselyId);
 		kysymys.setKysely(kysely);
 		kysymysRepository.save(kysymys);
-		return "redirect:/kyselyLista";
+		return "redirect:/kysymykset/"+kyselyId;
 	}
 
 

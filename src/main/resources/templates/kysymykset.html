@@ -2,15 +2,35 @@
 <html xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8" />
+    <button onclick="location.href='/kyselyLista'">
+      Takaisin kyselylistaan
+    </button>
     <title>Kysymykset</title>
+    <style>
+      a {
+        text-decoration: none;
+      }
+      button {
+        width: 100px;
+        font-size: 15px;
+      }
+    </style>
   </head>
   <body>
-  <h1>Kysymykset</h1>
+    <h1>Kysymykset</h1>
     <table>
       <tr th:each="kysymys : ${kysymykset}">
         <td th:text="${kysymys.kysymysteksti}"></td>
-        </table>
-          <a th:href="@{'http://localhost:5173/' + ${kyselyId}}">Vastaa</a>
+      </tr>
+    </table>
+
+    <button>
+      <a th:href="@{'http://localhost:5173/' + ${kyselyId}}">Vastaa</a>
+    </button>
+    <br />
+    <br />
+    <button>
+      <a th:href="@{'/lisaaKysymys/' + ${kyselyId}}">Lisää kysymys</a>
+    </button>
   </body>
 </html>
-
