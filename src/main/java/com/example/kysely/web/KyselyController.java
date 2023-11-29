@@ -96,17 +96,28 @@ public class KyselyController {
         return(List<Kysely>) kyselyRepository.findAll();
     }
 	
-	@CrossOrigin
-	 @RequestMapping(value="/kysymyksetREST/{id}", method = RequestMethod.GET)
-    public @ResponseBody Optional <Kysymys> kysymysByIdRest(@PathVariable Long id){
-        return(Optional <Kysymys>)  kysymysRepository.findById(id);
-    }
+	//Hakee kysymykset kysymysId:llä, eli palauttaa vain yhden kysymyksen
+		@CrossOrigin
+		 @RequestMapping(value="/kysymyksetREST/{id}", method = RequestMethod.GET)
+	    public @ResponseBody Optional <Kysymys> kysymysByIdRest(@PathVariable Long id){
+	        return(Optional <Kysymys>)  kysymysRepository.findById(id);
+	    }
+	
+	//Palauttaa kysymykset kyselyId:n perusteella, eli ne, jotka ovat saman {id}:n alla: luokassa kyselyId
+			@CrossOrigin
+			 @RequestMapping(value="/kysymyksetIdREST/{id}", method = RequestMethod.GET)
+		   public @ResponseBody List<Kysymys> kysymysById(@PathVariable Long id){
+			    Kysely kysely = new Kysely();
+			    kysely.setKyselyId(id);
+		       return kysymysRepository.findByKysely(kysely);
+		   }
 
 	@CrossOrigin
      @RequestMapping(value="/kyselytREST/{id}", method = RequestMethod.GET)
     public @ResponseBody Optional <Kysely> kyselyByIdRest(@PathVariable Long id){
         return(Optional <Kysely>)  kyselyRepository.findById(id);
     }
+	
 		
 }
 	

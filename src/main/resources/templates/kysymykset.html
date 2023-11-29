@@ -10,6 +10,7 @@
       <tr th:each="kysymys : ${kysymykset}">
         <td th:text="${kysymys.kysymysteksti}"></td>
         </table>
+          <a th:href="@{'http://localhost:5173/' + ${kyselyId}}">Vastaa</a>
   </body>
 </html>
 

@@ -46,16 +46,16 @@ public class KyselyApplication {
 		   kysymysRepository.save(new Kysymys("Kuka on lempi urheilijasi?", kyselyRepository.findByName("Urheilu kysely").get(0)));
            kysymysRepository.save(new Kysymys("Kuka voitti jääkiekon mm kisat vuonna 2012?", kyselyRepository.findByName("Urheilu kysely").get(0)));
        
-           kysymysRepository.save(new Kysymys("1.	Oletko koskaan asioinut Haaga-Helian kahvilassa?", kyselyRepository.findByName("Haaga-Helian kahvila kysely").get(0)));
-           kysymysRepository.save(new Kysymys("2.	Oletko ollut yleisesti tyytyväinen kahvilaan?", kyselyRepository.findByName("Haaga-Helian kahvila kysely").get(0)));
-           kysymysRepository.save(new Kysymys("3.	Jos et, niin miksi?", kyselyRepository.findByName("Haaga-Helian kahvila kysely").get(0)));
-           kysymysRepository.save(new Kysymys("4.	Onko kahvilan hinnoittelu mielestäsi kohtuullinen?", kyselyRepository.findByName("Haaga-Helian kahvila kysely").get(0)));
-           kysymysRepository.save(new Kysymys("5.	Onko kahvilan valikoima mielestäsi hyvä ja kattava?", kyselyRepository.findByName("Haaga-Helian kahvila kysely").get(0)));
-           kysymysRepository.save(new Kysymys("6.	Jos ei, niin mitä haluaisit muuttaa kahvilan valikoimassa?", kyselyRepository.findByName("Haaga-Helian kahvila kysely").get(0)));
-           kysymysRepository.save(new Kysymys("7.	Onko kahvilan tilat mielestäsi viihtyisät?", kyselyRepository.findByName("Haaga-Helian kahvila kysely").get(0)));
-           kysymysRepository.save(new Kysymys("8.	Jos ei, niin miten muuttaisit niitä?", kyselyRepository.findByName("Haaga-Helian kahvila kysely").get(0)));
-           kysymysRepository.save(new Kysymys("9.	Oletko ollut tyytyväinen saamaasi asiakaspalveluun kahvilassa?", kyselyRepository.findByName("Haaga-Helian kahvila kysely").get(0)));
-           kysymysRepository.save(new Kysymys("10.	Monennen vuoden opiskelija olet?", kyselyRepository.findByName("Haaga-Helian kahvila kysely").get(0)));
+           kysymysRepository.save(new Kysymys("Oletko koskaan asioinut Haaga-Helian kahvilassa?", kyselyRepository.findByName("Haaga-Helian kahvila kysely").get(0)));
+           kysymysRepository.save(new Kysymys("Oletko ollut yleisesti tyytyväinen kahvilaan?", kyselyRepository.findByName("Haaga-Helian kahvila kysely").get(0)));
+           kysymysRepository.save(new Kysymys("Jos et, niin miksi?", kyselyRepository.findByName("Haaga-Helian kahvila kysely").get(0)));
+           kysymysRepository.save(new Kysymys("Onko kahvilan hinnoittelu mielestäsi kohtuullinen?", kyselyRepository.findByName("Haaga-Helian kahvila kysely").get(0)));
+           kysymysRepository.save(new Kysymys("Onko kahvilan valikoima mielestäsi hyvä ja kattava?", kyselyRepository.findByName("Haaga-Helian kahvila kysely").get(0)));
+           kysymysRepository.save(new Kysymys("Jos ei, niin mitä haluaisit muuttaa kahvilan valikoimassa?", kyselyRepository.findByName("Haaga-Helian kahvila kysely").get(0)));
+           kysymysRepository.save(new Kysymys("Onko kahvilan tilat mielestäsi viihtyisät?", kyselyRepository.findByName("Haaga-Helian kahvila kysely").get(0)));
+           kysymysRepository.save(new Kysymys("Jos ei, niin miten muuttaisit niitä?", kyselyRepository.findByName("Haaga-Helian kahvila kysely").get(0)));
+           kysymysRepository.save(new Kysymys("Oletko ollut tyytyväinen saamaasi asiakaspalveluun kahvilassa?", kyselyRepository.findByName("Haaga-Helian kahvila kysely").get(0)));
+           kysymysRepository.save(new Kysymys("Monennen vuoden opiskelija olet?", kyselyRepository.findByName("Haaga-Helian kahvila kysely").get(0)));
            
         };
     }
