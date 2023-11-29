@@ -17,7 +17,7 @@ import jakarta.persistence.OneToMany;
 public class Kysymys {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long kysymysId;
     private String kysymysteksti;
 
 
@@ -27,8 +27,8 @@ public class Kysymys {
 	@JoinColumn(name = "kyselyId")
 	private Kysely kysely;
 
-	@JsonIgnore
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "kysymysteksti")
+	//@JsonIgnore
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "kysymys")
 	private List<Vastaus> vastaukset;
 
     
@@ -39,12 +39,12 @@ public class Kysymys {
 		this.kysely = kysely;
     }
 
-	public Long getId() {
-		return id;
+	public Long getKysymysId() {
+		return kysymysId;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setKysymysId(Long kysymysId) {
+		this.kysymysId = kysymysId;
 	}
 
 	public String getKysymysteksti() {
@@ -66,10 +66,10 @@ public class Kysymys {
 	@Override
 	public String toString() {
 		if(this.kysely!=null) {
-		return "Kysymys [id=" + id + ", kysymys=" + kysymysteksti + ", kysely=" + this.getKysely() + "]";
+		return "Kysymys [id=" + kysymysId + ", kysymys=" + kysymysteksti + ", kysely=" + this.getKysely() + "]";
 		}
 		else {
-		return "Kysymys [id=" + id + ", kysymys=" + kysymysteksti + ", kysely="+kysely+",]";
+		return "Kysymys [id=" + kysymysId + ", kysymys=" + kysymysteksti + ", kysely="+kysely+",]";
 		}
 	}
 

@@ -16,8 +16,8 @@ public class Vastaus {
     
 
     @ManyToOne
-	@JoinColumn(name = "kysymysteksti")
-	private Kysymys kysymysteksti;
+	@JoinColumn(name = "kysymysId")
+	private Kysymys kysymys;
 
     @ManyToOne
 	@JoinColumn(name = "kyselyId")
@@ -27,10 +27,10 @@ public class Vastaus {
 
     
 
-    public Vastaus(String vastaus, Kysymys kysymysteksti, Kysely kysely) {
+    public Vastaus(String vastaus, Kysymys kysymys, Kysely kysely) {
         super();
         this.vastaus = vastaus;
-        this.kysymysteksti = kysymysteksti;
+        this.kysymys = kysymys;
         this.kysely = kysely;
     }
 
@@ -52,12 +52,12 @@ public class Vastaus {
         this.vastaus = vastaus;
     }
 
-    public Kysymys getKysymysteksti() {
-        return kysymysteksti;
+    public Kysymys getKysymys() {
+        return kysymys;
     }
 
-    public void setKysymysteksti(Kysymys kysymysteksti) {
-        this.kysymysteksti = kysymysteksti;
+    public void setKysymys(Kysymys kysymys) {
+        this.kysymys = kysymys;
     }
 
     public Kysely getKysely() {
@@ -70,7 +70,7 @@ public class Vastaus {
 
     @Override
     public String toString() {
-        return "Vastaus [vastausId=" + vastausId + ", vastaus=" + vastaus + ", kysymys=" + kysymysteksti + ", kysely=" + kysely + "]";
+        return "Vastaus [vastausId=" + vastausId + ", vastaus=" + vastaus + ", kysymys=" + kysymys + ", kysely=" + kysely + "]";
     }
 
     

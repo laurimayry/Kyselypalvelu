@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -18,6 +19,8 @@ import com.example.kysely.domain.Kysely;
 import com.example.kysely.domain.KyselyRepository;
 import com.example.kysely.domain.Kysymys;
 import com.example.kysely.domain.KysymysRepository;
+import com.example.kysely.domain.Vastaus;
+import com.example.kysely.domain.VastausRepository;
 
 @Controller
 public class KyselyController {
@@ -26,6 +29,8 @@ public class KyselyController {
 	private KyselyRepository kyselyRepository;
 	@Autowired
 	private KysymysRepository kysymysRepository;
+	@Autowired
+	private VastausRepository vastausRepository;
 
 	@RequestMapping(value = "/kyselyLista", method = RequestMethod.GET)
 	public String listKyselyt(Model model) {
@@ -118,7 +123,21 @@ public class KyselyController {
         return(Optional <Kysely>)  kyselyRepository.findById(id);
     }
 	
-		
+
+	// RESTful service to save new vastaus
+	@CrossOrigin
+    @RequestMapping(value="/tallennaVastaus", method = RequestMethod.POST)
+    public @ResponseBody Vastaus saveVastausRest(@RequestBody Vastaus vastaus) {	
+            return vastausRepository.save(vastaus);
+    }
+
+	// ei tunnista kysymyksen tekstiä?
+	@CrossOrigin
+    @RequestMapping(value="/vastauksetREST", method = RequestMethod.GET)
+    public @ResponseBody List <Vastaus> vastauksetRest(){
+        return(List<Vastaus>) vastausRepository.findAll();
+    }
+
 }
 	
 
