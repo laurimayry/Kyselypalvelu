@@ -60,6 +60,14 @@ public class Kysely {
 		return  name ;
 	}
 
+	public List<Vastaus> getVastaukset() {
+		return vastaukset;
+	}
+
+	public void setVastaukset(List<Vastaus> vastaukset) {
+		this.vastaukset = vastaukset;
+	}
+
    
     
 }
