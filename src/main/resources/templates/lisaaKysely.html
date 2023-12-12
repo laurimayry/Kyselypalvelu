@@ -3,6 +3,39 @@
   <head>
     <meta charset="UTF-8" />
     <title>Lisää kysely</title>
+    <style>
+      button {
+        display: block;
+        color: #0044cc; /* Linkkien tekstiväri */
+        background-color: #f8f8f8; /* Linkkien taustaväri */
+        border: 1px solid #dddddd; /* Reunus */
+        border-radius: 5px; /* Pyöristetyt kulmat */
+        padding: 8px 12px; /* Sisäinen tyhjä tila */
+        margin: 5px 0; /* Ulkoinen tyhjä tila ylä- ja alapuolella */
+        text-decoration: none; /* Poistaa alleviivauksen */
+        font-family: Arial, sans-serif; /* Fontti */
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2); /* Varjo */
+        transition: background-color 0.3s, color 0.3s; /* Animaatio väreille */
+        width: 100px; /* Määrittää leveyden */
+        font-size: 15px; /* Fontin koko */
+      }
+
+      button:hover {
+        background-color: #e9e9e9; /* Taustaväri hiiren ollessa linkin päällä */
+        color: #000000; /* Tekstiväri hiiren ollessa linkin päällä */
+      }
+
+      input[type="text"] {
+        border: 1px solid #dddddd; /* Reunus */
+        border-radius: 5px; /* Pyöristetyt kulmat */
+        padding: 8px 12px; /* Sisäinen tyhjä tila */
+        font-family: Arial, sans-serif; /* Fontti */
+      }
+
+      label {
+        font-family: Arial, sans-serif; /* Fontti */
+      }
+    </style>
   </head>
   <body>
     <button onclick="location.href='/kyselyLista'">
@@ -15,10 +48,8 @@
       action="#"
       method="post"
     >
-      <!--Tässä otetaan kyselyn nimi-->
       <label for="name">Kyselyn nimi:</label>
       <input type="text" id="name" th:field="*{name}" required />
-
       <button type="submit">Lisää kysely</button>
     </form>
   </body>
